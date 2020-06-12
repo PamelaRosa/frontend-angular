@@ -1,0 +1,22 @@
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header text-center">Carrinho</div>
+    <div class="card-body">
+        
+        <hr>
+        <h6 class="card-title">Subtotal:</h6>
+
+        <ul>
+            <li *ngFor="let order of orders.productOrders">
+                {{order.product.image}} {{ order.product.name }} - {{ order.quantity}}
+            </li>
+            
+        </ul>
+       
+        <h6>Frete</h6>
+        <h6 class="card-title">Total: ${{total}}</h6>
+
+        <button class="btn btn-primary btn-block" (click)="finishOrder()"
+                [disabled]="orders.productOrders.length == 0">Finalizar compra
+        </button>
+    </div>
+</div>
