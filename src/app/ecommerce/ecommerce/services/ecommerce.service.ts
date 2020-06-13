@@ -17,8 +17,14 @@ export class EcommerceService {
     private productOrderSubject = new Subject();
     private ordersSubject = new Subject();
     private totalSubject = new Subject();
+    private subTotalSubject = new Subject();
+    private sumFreteSubject = new Subject();
+    private semFreteSubject = new Subject();
 
     private total: number;
+    private subtotal: number;
+    private sumFrete: number;
+    private semFrete: number;
 
     ProductOrderChanged = this.productOrderSubject.asObservable();
     OrdersChanged = this.ordersSubject.asObservable();
@@ -26,9 +32,6 @@ export class EcommerceService {
 
     constructor(private http: HttpClient) {
     }
-
- 
-
 
     listarProdutos ():Observable<Product[]> {
         return this.http.get<Product[]>(this.url)
@@ -62,5 +65,30 @@ export class EcommerceService {
     set Total(value: number) {
         this.total = value;
         this.totalSubject.next();
+    }
+    get SubTotal() {
+        return this.subtotal;
+    }
+
+    set SubTotal(value: number) {
+        this.subtotal = value;
+        this.subTotalSubject.next();
+    }
+    get SumFrete() {
+        return this.sumFrete;
+    }
+
+    set SumFrete(value: number) {
+        this.sumFrete = value;
+        this.sumFreteSubject.next();
+    }
+
+    get SemFrete() {
+        return this.semFrete;
+    }
+
+    set SemFrete(value: number) {
+        this.semFrete = value;
+        this.semFreteSubject.next();
     }
 }

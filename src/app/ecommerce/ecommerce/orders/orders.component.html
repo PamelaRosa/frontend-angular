@@ -1,13 +1,17 @@
-<h2 class="text-center">ORDER</h2>
+<h2 class="text-center">PEDIDOS</h2>
 <ul>
-    <li *ngFor="let order of orders.productOrders">
-        {{ order.product.name }} - ${{ order.product.price }} x {{ order.quantity}} pcs.
+    <li>
+        <div class="card-header"  *ngFor="let order of orders.productOrders">
+            <img src="{{order.product.image}} "> {{ order.product.name }} - ${{ order.product.price }} x
+            {{ order.quantity}}.
+        </div>
     </li>
 </ul>
-<h3 class="text-right">Total amount: ${{ total | currency: 'BRL': true}}</h3>
+<h3 class="text-right">Total do pedido: {{ total | currency: 'BRL': true}}</h3>
 
-<button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
+<button class="btn btn-primary" (click)="pay()" *ngIf="!paid">Pagar</button>
+<button class="btn btn-secondary"><a href="/products">Voltar</a></button>
 
 <div class="alert alert-success" role="alert" *ngIf="paid">
-    <strong>Congratulation!</strong> You successfully made the order.
+    <strong>Parabéns!</strong> Compra concluida!
 </div>

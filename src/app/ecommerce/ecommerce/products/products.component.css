@@ -1,0 +1,34 @@
+.card {
+    border: none;
+}
+.card-header{
+    border-bottom: none;
+    background-color: #eeeeee;
+    padding: 30px 10px;
+}
+.card-img-top {
+    width: 75%;
+}
+#produto-titulo {
+    color: #766c6c;
+    font-size: 1.2rem;
+}
+
+.card-price {
+color: #3486e6;
+font-weight: 700;
+}
+.container-add {
+    width: fit-content;
+    margin-top: 30px;
+}
+.container-remover button {
+    margin-left: 75px;
+}
+.btn {
+    color: #3486e6;
+    font-weight: 700;
+}
+
+
+

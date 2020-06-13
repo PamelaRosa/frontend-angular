@@ -15,11 +15,13 @@ export class ProductsComponent implements OnInit {
     productOrders: ProductOrder[] = [];
     products: Product[] = [];
     selectedProductOrder: ProductOrder;
-    private shoppingCartOrders: ProductOrders;
+    shoppingCartOrders: ProductOrders;
     sub: Subscription;
     productSelected: boolean = false;
+    container_on: boolean = false;
 
     constructor(private ecommerceService: EcommerceService) {
+        this.container_on = false;
     }
 
     ngOnInit() {
@@ -35,16 +37,7 @@ export class ProductsComponent implements OnInit {
         this.productSelected = true;
     }
 
-    removeFromCart(productOrder: ProductOrder) {
-        let index = this.getProductIndex(productOrder.product);
-        if (index > -1) {
-            this.shoppingCartOrders.productOrders.splice(
-                this.getProductIndex(productOrder.product), 1);
-        }
-        this.ecommerceService.ProductOrders = this.shoppingCartOrders;
-        this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-        this.productSelected = false;
-    }
+   
 
     getProductIndex(product: Product): number {
         return this.ecommerceService.ProductOrders.productOrders.findIndex(

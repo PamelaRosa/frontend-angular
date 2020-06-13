@@ -1,16 +1,13 @@
-<h1>Games</h1>
-<select style="float: right;">
-    <option>Mais Polular</option>
-</select>
+<div class="col-md-3 position-cart">
+    <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
+    </app-shopping-cart>
+</div>
+<div class="col-md-6 offset-3">
+    <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+</div>
 <div class="row">
-    <div class="col-md-9">
+    <h1 id="games" [hidden]="orderFinished">Games</h1>
+    <div class="column">
         <app-products #productsC [hidden]="orderFinished"></app-products>
-    </div>
-    <div class="col-md-3">
-        <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
-                        [hidden]="orderFinished"></app-shopping-cart>
-    </div>
-    <div class="col-md-6 offset-3">
-        <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
     </div>
 </div>

@@ -1,0 +1,17 @@
+.title-container {
+    width: 50%;
+}
+.h1, h1 {
+    font-size: 3.5rem;
+
+}
+#games {
+    margin: 60px 15px;
+    width: 5em;
+    display: flex;
+}
+
+.position-cart {
+        margin:60px 0px;
+        float: right;
+}

@@ -1,32 +1,27 @@
 <div class="row card-deck">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">
-        <div class="card text-center">
+        <div (mouseenter)="order.container_on = true" (mouseleave)="order.container_on = false" class="card text-center">
             <div class="card-header">
-                <a href="#"><img class="card-img-top" src={{order.product.image}} alt=""></a>
+                <a href="#"><img class="card-img-top" src={{order.product.image}}></a>
             </div>
-            <div class="card-body">
-                
-                <h6>{{order.product.name}}</h6>
-                <h6 class="card-title">${{order.product.price}}</h6>
-                <div class="row">
-                   
-                    <div class="col-4" *ngIf="!isProductSelected(order.product)">
-                        <input type="number" min="0" class="form-control" [(ngModel)]=order.quantity>
-                    </div>
-                    <div class="col-4 " *ngIf="!isProductSelected(order.product)">
-                        <button class="btn btn-primary" (click)="addToCart(order)"
-                                [disabled]="order.quantity <= 0">Add To Cart
-                        </button>
-                    </div>
-                    <div class="col-12" *ngIf="isProductSelected(order.product)">
-                        <button class="btn btn-primary btn-block"
-                                (click)="removeFromCart(order)">Remove From Cart
-                        </button>
+            <div class="card-body" *ngIf="!order.container_on">
+
+                <h6 id="produto-titulo">{{order.product.name}}</h6>
+                <h6 class="card-price">R$ {{order.product.price}}</h6>
+            </div>
+                <div class="container-add" *ngIf="order.container_on">
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="number" min="0" class="form-control" [(ngModel)]=order.quantity>
+                        </div>
+                        <div >
+                            <button class="btn" (click)="addToCart(order)" [disabled]="order.quantity <= 0">adicionar
+                                ao carrinho
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>
-
-
